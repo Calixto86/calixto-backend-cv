@@ -10,8 +10,15 @@
 
 <body>
 
+
+
     <nav class="Sidenav">
-        <ul>
+
+        <button class="menu-toggle">
+            <img src="icons/menu.png" alt="menu">
+        </button>
+
+        <ul class="menu">
             <li><a href="#profile">Profile</a></li>
             <li><a href="#work-experience">Work Experience</a></li>
             <li><a href="#education">Eduaction</a></li>
@@ -26,24 +33,32 @@
             <div class="profile">
                 <img src="images/perfil.jpg" class="profile-img">
             </div>
-            <h2 class="name">Calixto <br><span>Mamani</span></h2>
-            <p class="n-p">Backend & Database Developer</p>
-            <div class="title-section">
-                <img src="icons/usuario-de-perfil.png">
-                <p class="p2">Profile</p>
+
+            <div class="profile-info">
+                <h2 class="name">Calixto <br><span>Mamani</span></h2>
+                <p class="n-p">Backend & Database Developer</p>
+
+                <div class="title-section">
+                    <img src="icons/usuario-de-perfil.png">
+                    <p class="p2">Profile</p>
+                </div>
+
+                <p class="p3">
+                    Ingeniero Informático con enfoque en desarrollo backend y gestión de bases de datos. Experiencia en
+                    la
+                    creación de aplicaciones web y sistemas eficientes, utilizando tecnologías como Java, C, Python y
+                    JavaScript.
+                    <br><br>
+                    Especializado en diseño, implementación y optimización de bases de datos con PostgreSQL, así como en
+                    el
+                    desarrollo de lógica de negocio del lado del servidor. He trabajado en proyectos académicos y
+                    personales
+                    aplicando metodologías ágiles como Scrum.
+                    <br><br>
+                    Interesado en sistemas distribuidos, arquitectura backend y desarrollo de soluciones escalables y
+                    eficientes.
+                </p>
             </div>
-            <p class="p3">
-                Ingeniero Informático con enfoque en desarrollo backend y gestión de bases de datos. Experiencia en la
-                creación de aplicaciones web y sistemas eficientes, utilizando tecnologías como Java, C, Python y
-                JavaScript.
-                <br><br>
-                Especializado en diseño, implementación y optimización de bases de datos con PostgreSQL, así como en el
-                desarrollo de lógica de negocio del lado del servidor. He trabajado en proyectos académicos y personales
-                aplicando metodologías ágiles como Scrum.
-                <br><br>
-                Interesado en sistemas distribuidos, arquitectura backend y desarrollo de soluciones escalables y
-                eficientes.
-            </p>
         </section>
 
         <section id="work-experience">
@@ -122,7 +137,8 @@
                         datos y redes.
                         <br><br>
                         Experiencia en desarrollo de aplicaciones utilizando Java, C, Python y tecnologías web.
-                        Especial interés en backend, sistemas distribuidos y optimización de bases de datos.</p>
+                        Especial interés en backend, sistemas distribuidos y optimización de bases de datos.
+                    </p>
                 </div>
             </div>
         </section>
@@ -222,15 +238,41 @@
                     <img src="icons/twitter.png" class="icono"><span>@calixtomamani</span>
                 </div>
                 <div class="footer-item">
-                    <img src="icons/linkedin.png" class="icono"><span>linkedin.com/in/calixtomamani</span>
+                    <img src="icons/linkedin.png" class="icono" data-link="https://www.linkedin.com/feed/"><span>linkedin.com/in/calixtomamani</span>
                 </div>
                 <div class="footer-item">
-                    <img src="icons/facebook.png" class="icono"><span>facebook.com/calixtomamani</span>
+                    <img src="icons/facebook.png" class="icono" data-link="https://www.facebook.com/calixto.mamani.9083?locale=es_LA"><span>facebook.com/calixtomamani</span>
                 </div>
             </div>
 
         </div>
     </footer>
+
+    <script>
+        const toggle = document.querySelector('.menu-toggle');
+        const menu = document.querySelector('.menu');
+
+        toggle.addEventListener('click', () => {
+            menu.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.remove('active');
+            });
+        });
+
+        // hace que los iconos sean clikables
+        document.querySelectorAll('.icono').forEach(icon => {
+            icon.addEventListener('click', () => {
+                const link = icon.getAttribute('data-link');
+                if (link) {
+                    window.open(link, '_blank');
+                }
+            });
+        });
+    </script>
+
 </body>
 
 </html>

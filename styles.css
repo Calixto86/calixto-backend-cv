@@ -6,6 +6,8 @@
     --gray: #e5e7eb;
     --text: #374151;
     --lighttext: #6b7280;
+
+    --nav-height: 60px;
 }
 
 * {
@@ -20,12 +22,46 @@ body {
     line-height: 1.6;
 }
 
+.menu-toggle {
+    width: 100%;
+    padding: 15px;
+    background: var(--primary);
+    color: white;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.menu-toggle img {
+    width: 25px;
+    height: 25px;
+}
+
+.menu {
+    display: none;
+    flex-direction: column;
+    position: static;
+    width: 100%;
+    background-color: var(--white);
+}
+
+.menu.active {
+    display: flex;
+}
+
 nav.Sidenav {
     position: fixed;
+    top: 0;
     width: 100%;
     background: var(--white);
     border-bottom: 1px solid #ddd;
     z-index: 1000;
+    display: flex;
+    flex-direction: column;
+}
+
+nav.Sidenav ul {
+    list-style: none;
 }
 
 nav.Sidenav li a {
@@ -36,7 +72,7 @@ nav.Sidenav li a {
     text-align: center;
 }
 
-nav.Sidenav li a:hover:not(.active) {
+nav.Sidenav li a:hover {
     background-color: var(--primary);
     color: white;
 }
@@ -45,7 +81,7 @@ nav.Sidenav li a:hover:not(.active) {
     background: transparent;
     max-width: 900px;
     margin: auto;
-    padding-top: 180px;
+    padding-top: var(--nav-height); /* evita que el nav tape */
 }
 
 section {
@@ -54,17 +90,14 @@ section {
     border-radius: 12px;
     padding: 25px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-    scroll-margin-top: 160px;
+    scroll-margin-top: var(--nav-height); /* para que no tape titulos*/
 }
 
 .profile {
-    overflow: hidden;
-    position: relative;
+    text-align: center;
 }
 
 .profile-img {
-    display: block;
-    margin: 0 auto;
     width: 120px;
     height: 120px;
     border-radius: 50%;
@@ -72,7 +105,7 @@ section {
 }
 
 .name {
-    font-size: 32px;
+    font-size: 30px;
     font-weight: bold;
     color: var(--secondary);
     text-align: center;
@@ -126,20 +159,22 @@ section {
     font-size: 13px;
     color: var(--lighttext);
     line-height: 1.6;
+    text-align: justify; /*alineacioin tanto a izc y dere*/
 }
 
 .lr-box {
     display: flex;
-    gap: 15px;
+    flex-direction: column;
+    gap: 10px;
     margin-top: 20px;
 }
 
 .left {
-    min-width: 120px;
+    font-weight: bold;
 }
 
 .right {
-    flex: 1;
+    width: 100%;
 }
 
 .skills-container {
@@ -149,7 +184,7 @@ section {
 }
 
 .skill {
-    flex: 1 1 45%;
+    flex: 1 1 100%; /* Mobile 1 columna con tamaño base 100%*/
 }
 
 .p6 {
@@ -178,6 +213,11 @@ footer.info {
     border-radius: 12px;
 }
 
+.footer-container {
+    display: flex;
+    flex-direction: column;
+}
+
 .footer-column {
     width: 100%;
     margin-bottom: 20px;
@@ -202,4 +242,106 @@ footer.info {
     border-radius: 10px;
     padding: 5px;
     border: 1px solid var(--gray);
+}
+
+/* ------------- TABLET ---------------*/
+@media (min-width: 768px) {
+
+    .menu-toggle {
+        display: none;
+    }
+
+    .menu {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    nav.Sidenav ul {
+        display: flex;
+        justify-content: center;
+    }
+
+    nav.Sidenav li a {
+        padding: 15px 20px;
+    }
+
+    /* ---- Profile tablet ---- */
+
+    .resume-box {
+        padding-top: 70px;
+    }
+
+    .section-profile {
+        display:flex;
+        align-items: flex-start;
+        gap: 30px;
+    }
+
+    .profile {
+        flex: 0 0 150px;
+        text-align: center;
+    }
+
+    .profile-info {
+        flex: 1;
+    }
+
+    .profile-img {
+        width: 140px;
+        height: 140px;
+    }
+
+    .name, .n-p {
+        text-align: left;
+    }
+
+    /* Experience */
+    .lr-box {
+        flex-direction: row;
+    }
+
+    .left {
+        width: 150px;
+    }
+
+    /* Skills */
+    .skill {
+        flex: 1 1 45%; /* 2 columnas base 45%*/
+    }
+
+    .footer-container {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .footer-column {
+        width: 45%;
+    }
+}
+
+/* --------------- Desktop ------------- */
+@media (min-width: 1024px) {
+
+    .resume-box {
+        max-width: 1100px;
+    }
+
+    /* Skills */
+    .skill {
+        flex: 1 1 22%; /* 4 columnas base 22%*/
+    }
+}
+
+/* ------------- LANDSCAPE(Ajuste al girar pantalla de celular) ------------ */
+@media (orientation: landscape) and (max-width: 768px) {
+
+    .profile-img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .name {
+        font-size: 24px;
+    }
 }
