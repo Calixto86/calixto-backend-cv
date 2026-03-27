@@ -1,12 +1,12 @@
 :root {
-    --bgcolor: #f5f7fa;
-    --primary: #2563eb;
-    --secondary: #1e293b;
-    --white: #ffffff;
-    --gray: #e5e7eb;
-    --text: #374151;
-    --lighttext: #6b7280;
-
+    --bgcolor: #0f172a;
+    --primary: #8b5cf6;
+    --secondary: #e2e8f0;
+    --bg-card: #1e293b;
+    --gray: #334155;
+    --text: #cbd5f5;
+    --lighttext: #94a3b8;
+    --bg-nav: #020617;
     --nav-height: 60px;
 }
 
@@ -42,7 +42,7 @@ body {
     flex-direction: column;
     position: static;
     width: 100%;
-    background-color: var(--white);
+    background-color: var(--bg-nav);
 }
 
 .menu.active {
@@ -53,8 +53,7 @@ nav.Sidenav {
     position: fixed;
     top: 0;
     width: 100%;
-    background: var(--white);
-    border-bottom: 1px solid #ddd;
+    background: var(--bg-card);
     z-index: 1000;
     display: flex;
     flex-direction: column;
@@ -78,19 +77,19 @@ nav.Sidenav li a:hover {
 }
 
 .resume-box {
-    background: transparent;
+    background: var(--bg-card);
     max-width: 900px;
     margin: auto;
-    padding-top: var(--nav-height); /* evita que el nav tape */
+    padding-top: var(--nav-height);
 }
 
 section {
-    background: var(--white);
     margin-bottom: 20px;
-    border-radius: 12px;
     padding: 25px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-    scroll-margin-top: var(--nav-height); /* para que no tape titulos*/
+    scroll-margin-top: var(--nav-height);
+    background: var(--bg-card);
+    border: 1px solid var(--gray);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
 }
 
 .profile {
@@ -140,7 +139,7 @@ section {
 .p2 {
     font-size: 16px;
     font-weight: bold;
-    color: var(--primary);
+    color: var(--secondary); /* bien fuerte */
 }
 
 .p3 {
@@ -148,18 +147,16 @@ section {
     color: var(--text);
     line-height: 1.7;
 }
-
 .p4 {
-    font-size: 14px;
-    font-weight: bold;
+    font-size: 17px;
+    font-weight: 700;
     color: var(--secondary);
 }
 
 .p5 {
-    font-size: 13px;
-    color: var(--lighttext);
-    line-height: 1.6;
-    text-align: justify; /*alineacioin tanto a izc y dere*/
+    font-size: 14px;
+    color: var(--text);
+    line-height: 1.7;
 }
 
 .lr-box {
@@ -167,10 +164,15 @@ section {
     flex-direction: column;
     gap: 10px;
     margin-top: 20px;
+    background: var(--bg-card);
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid var(--gray);
 }
 
-.left {
-    font-weight: bold;
+.left .p5 {
+    font-size: 12px;
+    color: var(--lighttext);
 }
 
 .right {
@@ -184,12 +186,13 @@ section {
 }
 
 .skill {
-    flex: 1 1 100%; /* Mobile 1 columna con tamaño base 100%*/
+    flex: 1 1 100%;
 }
 
 .p6 {
     margin-bottom: 5px;
     font-size: 13px;
+    color: var(--text);
 }
 
 .progress {
@@ -206,15 +209,17 @@ section {
 }
 
 footer.info {
-    background: var(--white);
+    background: var(--gray);
     max-width: 900px;
     margin: auto;
     padding: 20px;
     border-radius: 12px;
+    color: var(--text);
 }
 
 .footer-container {
     display: flex;
+    color: var(--secondary);
     flex-direction: column;
 }
 
@@ -235,16 +240,16 @@ footer.info {
     margin-bottom: 10px;
 }
 
+
 .footer-item img.icono {
     width: 30px;
     height: 30px;
     margin-right: 10px;
-    border-radius: 10px;
     padding: 5px;
     border: 1px solid var(--gray);
 }
 
-/* ------------- TABLET ---------------*/
+/* TABLET */
 @media (min-width: 768px) {
 
     .menu-toggle {
@@ -266,8 +271,6 @@ footer.info {
         padding: 15px 20px;
     }
 
-    /* ---- Profile tablet ---- */
-
     .resume-box {
         padding-top: 70px;
     }
@@ -280,7 +283,6 @@ footer.info {
 
     .profile {
         flex: 0 0 150px;
-        text-align: center;
     }
 
     .profile-info {
@@ -296,7 +298,6 @@ footer.info {
         text-align: left;
     }
 
-    /* Experience */
     .lr-box {
         flex-direction: row;
     }
@@ -305,9 +306,8 @@ footer.info {
         width: 150px;
     }
 
-    /* Skills */
     .skill {
-        flex: 1 1 45%; /* 2 columnas base 45%*/
+        flex: 1 1 45%;
     }
 
     .footer-container {
@@ -320,20 +320,19 @@ footer.info {
     }
 }
 
-/* --------------- Desktop ------------- */
+/* DESKTOP */
 @media (min-width: 1024px) {
 
     .resume-box {
         max-width: 1100px;
     }
 
-    /* Skills */
     .skill {
-        flex: 1 1 22%; /* 4 columnas base 22%*/
+        flex: 1 1 22%;
     }
 }
 
-/* ------------- LANDSCAPE(Ajuste al girar pantalla de celular) ------------ */
+/* LANDSCAPE */
 @media (orientation: landscape) and (max-width: 768px) {
 
     .profile-img {
